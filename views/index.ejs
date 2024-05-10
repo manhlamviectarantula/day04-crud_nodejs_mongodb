@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <title>Danh sách sản phẩm</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <img src="public/images/ip14.jpg" width="200px" height="100px" alt="">
+  <h1>Danh sách sản phẩm</h1>
+  <a href="/form-add"><button>Thêm sản phẩm</button></a> <br>
+  <!-- <%= %> -->
+  <table border="1" style="margin-top: 20px;">
+    <tr>
+      <!-- <th>ID</th> -->
+      <th>Tên</th>
+      <th>Giá</th>
+      <th>Hình</th>
+      <th colspan="3">ACTION</th>
+    </tr>
+    <% products.forEach(item=> { %>
+      <tr>
+        <!-- <td><%= item._id %></td> -->
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
+        <td><img src="../public/images/ip13.jpg" alt=""></td>
+        <td><a href="/form-update/<%= item._id %>">Chi tiết</a></td>
+        <td><a href="/form-update/<%= item._id %>">Sửa</a></td>
+        <td><a href="/form-delete/<%= item._id %>">Xóa</a></td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+
 </html>

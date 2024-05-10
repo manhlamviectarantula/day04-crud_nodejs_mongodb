@@ -1,8 +1,11 @@
 var createError = require('http-errors');
 var express = require('express');
+const bodyparser = require('body-parser')
+const multer = require('multer')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -18,6 +21,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyparser.urlencoded({
+  extended: true
+}))
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

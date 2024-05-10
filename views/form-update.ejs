@@ -1,0 +1,8 @@
+<h1>Sửa sản phẩm</h1>
+<form action="/update" method="post">
+    Tên: <input type="text" name="name" value="<%= products.name %>"><br>
+    Giá: <input type="number" name="price" value="<%= products.price %>"><br>
+    Hình: <input type="text" name="image" value="<%= products.image %>"><br>
+    Mô tả: <input type="text" name="description" value="<%= products.description %>"><br>
+    <button type="submit">Sửa sản phẩm</button>
+</form>
