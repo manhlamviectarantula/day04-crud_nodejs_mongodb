@@ -117,7 +117,7 @@ router.get('/form-update/:id', function (req, res, next) {
 })
 
 router.post('/update', function (req, res, next) {
-  products.findByIdAndUpdate(req.body.id, req.body, (error, data) => {
+  products.findByIdAndUpdate(req.params.id, req.body, (error, data) => {
     res.redirect('/')
   })
 })
