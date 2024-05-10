@@ -1,10 +1,9 @@
-<h1>Sửa sản phẩm</h1>
+<h1>Chi tiết sản phẩm</h1>
 <form action="/update" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<%= products.id %>">
     Tên: <input type="text" name="name" value="<%= products.name %>"><br>
     Giá: <input type="number" name="price" value="<%= products.price %>"><br>
-    Hình: <input type="file" name="imageURL"><br>
+    <img width="255" height="170" src="/images/<%= products.image %>" alt=""><br>
     Mô tả: <textarea rows="4" cols="50" name='description'><%= products.description %></textarea><br>
-    <strong>Link xem chi tiết:</strong> <input type="text" name="detail" value="<%= products.detail %>"><br>
-    <button type="submit">Sửa sản phẩm</button>
+    <strong>Link xem chi tiết:</strong> <a href="<%= products.detail %>">Xem</a>
 </form>

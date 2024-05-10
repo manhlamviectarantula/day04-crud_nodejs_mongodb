@@ -7,7 +7,6 @@
 </head>
 
 <body>
-  <img src="../public/images/ip14.jpg" width="200px" height="100px" alt="">
   <h1>Danh sách sản phẩm</h1>
   <a href="/form-add"><button>Thêm sản phẩm</button></a> <br>
   <!-- <%= %> -->
@@ -21,11 +20,10 @@
     </tr>
     <% products.forEach(item=> { %>
       <tr>
-        <!-- <td><%= item._id %></td> -->
-        <td><%= item.name %></td>
+        <td class="namesp"><%= item.name %></td>
         <td><%= item.price %></td>
-        <td><img src="../public/images/ip13.jpg" alt=""></td>
-        <td><a href="/form-update/<%= item._id %>">Chi tiết</a></td>
+        <td><img width="100%" height="100px" src="/images/<%= item.image %>" alt=""></td>
+        <td><a href="/detail-product/<%= item._id %>">Chi tiết</a></td>
         <td><a href="/form-update/<%= item._id %>">Sửa</a></td>
         <td><a href="/form-delete/<%= item._id %>">Xóa</a></td>
       </tr>

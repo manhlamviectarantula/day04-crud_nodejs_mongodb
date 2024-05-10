@@ -46,6 +46,9 @@ let productsSchema = mongoose.Schema({
   },
   description: {
     type: String
+  },
+  detail:{
+    type: String
   }
 }, { timeStamp: true });
 
@@ -82,7 +85,8 @@ router.post('/add', upload.single('imageURL'), function (req, res, next) {
     name: req.body.name,
     price: req.body.price,
     description: req.body.description,
-    image: req.file ? req.file.path : null
+    image: req.file ? req.file.filename : null,
+    detail: req.body.detail
   })
   item.save()
     // .then(response => {
@@ -116,15 +120,32 @@ router.get('/form-update/:id', function (req, res, next) {
   })
 })
 
-router.post('/update', function (req, res, next) {
-  products.findByIdAndUpdate(req.params.id, req.body, (error, data) => {
+router.post('/update', upload.single('imageURL'), function (req, res, next) {
+  const updateFields = {
+    name: req.body.name,
+    price: req.body.price,
+    description: req.body.description,
+    detail: req.body.detail
+  };
+
+  if (req.file) {
+    updateFields.image = req.file.filename;
+  }
+
+  products.findByIdAndUpdate(req.body.id, updateFields, (error, data) => {
     res.redirect('/')
-  })
+  });
 })
 
 router.get('/form-delete/:id', function (req, res, next) {
   products.findByIdAndDelete(req.params.id, (error, data) => {
     res.redirect('/')
+  })
+})
+
+router.get('/detail-product/:id', function (req, res, next) {
+  products.findById(req.params.id, (error, data) => {
+    res.render('detail-product', { products: data })
   })
 })
 
